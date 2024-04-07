@@ -372,95 +372,95 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
     if (current_uid().val == 0) {
         int error = 0;
 		if (arg2 == CMD_SUSFS_ADD_SUSPICIOUS_PATH) {
-			if (!access_ok(VERIFY_READ, (void __user*)arg3, sizeof(struct st_susfs_suspicious_path))) {
+			if (!access_ok((unsigned long)arg3, sizeof(struct st_susfs_suspicious_path))) {
 				pr_err("susfs: CMD_SUSFS_ADD_SUSPICIOUS_PATH -> arg3 is not accessible\n");
                 return 0;
 			}
-			if (!access_ok(VERIFY_READ, (void __user*)arg5, sizeof(error))) {
+			if (!access_ok((unsigned long)arg5, sizeof(error))) {
 				pr_err("susfs: CMD_SUSFS_ADD_SUSPICIOUS_PATH -> arg5 is not accessible\n");
                 return 0;
 			}
 			error = susfs_add_suspicious_path((struct st_susfs_suspicious_path __user*)arg3);
             pr_info("susfs: CMD_SUSFS_ADD_SUSPICIOUS_PATH -> ret: %d\n", error);
-            copy_to_user((void __user*)arg5, &error, sizeof(error));
+            copy_to_user((unsigned long)arg5, &error, sizeof(error));
 			return 0;
 		} else if (arg2 == CMD_SUSFS_ADD_MOUNT_TYPE) {
-			if (!access_ok(VERIFY_READ, (void __user*)arg3, sizeof(struct st_susfs_suspicious_mount_type))) {
+			if (!access_ok((unsigned long)arg3, sizeof(struct st_susfs_suspicious_mount_type))) {
 				pr_err("susfs: CMD_SUSFS_ADD_MOUNT_TYPE -> arg3 is not accessible\n");
                 return 0;
 			}
-			if (!access_ok(VERIFY_READ, (void __user*)arg5, sizeof(error))) {
+			if (!access_ok((unsigned long)arg5, sizeof(error))) {
 				pr_err("susfs: CMD_SUSFS_ADD_MOUNT_TYPE -> arg5 is not accessible\n");
                 return 0;
 			}
 			error = susfs_add_mount_type((struct st_susfs_suspicious_mount_type __user*)arg3);
             pr_info("susfs: CMD_SUSFS_ADD_MOUNT_TYPE -> ret: %d\n", error);
-            copy_to_user((void __user*)arg5, &error, sizeof(error));
+            copy_to_user((unsigned long)arg5, &error, sizeof(error));
 			return 0;
 		} else if (arg2 == CMD_SUSFS_ADD_MOUNT_PATH) {
-			if (!access_ok(VERIFY_READ, (void __user*)arg3, sizeof(struct st_susfs_suspicious_mount_path))) {
+			if (!access_ok((unsigned long)arg3, sizeof(struct st_susfs_suspicious_mount_path))) {
 				pr_err("susfs: CMD_SUSFS_ADD_MOUNT_PATH -> arg3 is not accessible\n");
                 return 0;
 			}
-			if (!access_ok(VERIFY_READ, (void __user*)arg5, sizeof(error))) {
+			if (!access_ok((unsigned long)arg5, sizeof(error))) {
 				pr_err("susfs: CMD_SUSFS_ADD_MOUNT_PATH -> arg5 is not accessible\n");
                 return 0;
 			}
 			error = susfs_add_mount_path((struct st_susfs_suspicious_mount_path __user*)arg3);
             pr_info("susfs: CMD_SUSFS_ADD_MOUNT_PATH -> ret: %d\n", error);
-            copy_to_user((void __user*)arg5, &error, sizeof(error));
+            copy_to_user((unsigned long)arg5, &error, sizeof(error));
 			return 0;
 		} else if (arg2 == CMD_SUSFS_ADD_SUSPICIOUS_KSTAT) {
-			if (!access_ok(VERIFY_READ, (void __user*)arg3, sizeof(struct st_susfs_suspicious_kstat))) {
+			if (!access_ok((unsigned long)arg3, sizeof(struct st_susfs_suspicious_kstat))) {
 				pr_err("susfs: CMD_SUSFS_ADD_SUSPICIOUS_KSTAT -> arg3 is not accessible\n");
                 return 0;
 			}
-			if (!access_ok(VERIFY_READ, (void __user*)arg5, sizeof(error))) {
+			if (!access_ok((unsigned long)arg5, sizeof(error))) {
 				pr_err("susfs: CMD_SUSFS_ADD_SUSPICIOUS_KSTAT -> arg5 is not accessible\n");
                 return 0;
 			}
 			error = susfs_add_suspicious_kstat((struct st_susfs_suspicious_kstat __user*)arg3);
             pr_info("susfs: CMD_SUSFS_ADD_SUSPICIOUS_KSTAT -> ret: %d\n", error);
-            copy_to_user((void __user*)arg5, &error, sizeof(error));
+            copy_to_user((unsigned long)arg5, &error, sizeof(error));
 			return 0;
 		} else if (arg2 == CMD_SUSFS_UPDATE_SUSPICIOUS_KSTAT) {
-			if (!access_ok(VERIFY_READ, (void __user*)arg3, sizeof(struct st_susfs_suspicious_kstat))) {
+			if (!access_ok((unsigned long)arg3, sizeof(struct st_susfs_suspicious_kstat))) {
 				pr_err("susfs: CMD_SUSFS_UPDATE_SUSPICIOUS_KSTAT -> arg3 is not accessible\n");
                 return 0;
 			}
-			if (!access_ok(VERIFY_READ, (void __user*)arg5, sizeof(error))) {
+			if (!access_ok((unsigned long)arg5, sizeof(error))) {
 				pr_err("susfs: CMD_SUSFS_UPDATE_SUSPICIOUS_KSTAT -> arg5 is not accessible\n");
                 return 0;
 			}
 			error = susfs_update_suspicious_kstat((struct st_susfs_suspicious_kstat __user*)arg3);
             pr_info("susfs: CMD_SUSFS_UPDATE_SUSPICIOUS_KSTAT -> ret: %d\n", error);
-            copy_to_user((void __user*)arg5, &error, sizeof(error));
+            copy_to_user((unsigned long)arg5, &error, sizeof(error));
 			return 0;
 		} else if (arg2 == CMD_SUSFS_ADD_TRY_UMOUNT) {
-			if (!access_ok(VERIFY_READ, (void __user*)arg3, sizeof(struct st_susfs_try_umount))) {
+			if (!access_ok((unsigned long)arg3, sizeof(struct st_susfs_try_umount))) {
 				pr_err("susfs: CMD_SUSFS_ADD_TRY_UMOUNT -> arg3 is not accessible\n");
                 return 0;
 			}
-			if (!access_ok(VERIFY_READ, (void __user*)arg5, sizeof(error))) {
+			if (!access_ok((unsigned long)arg5, sizeof(error))) {
 				pr_err("susfs: CMD_SUSFS_ADD_TRY_UMOUNT -> arg5 is not accessible\n");
                 return 0;
 			}
 			error = susfs_add_try_umount((struct st_susfs_try_umount __user*)arg3);
             pr_info("susfs: CMD_SUSFS_ADD_TRY_UMOUNT -> ret: %d\n", error);
-            copy_to_user((void __user*)arg5, &error, sizeof(error));
+            copy_to_user((unsigned long)arg5, &error, sizeof(error));
 			return 0;
 		} else if (arg2 == CMD_SUSFS_ADD_UNAME) {
-			if (!access_ok(VERIFY_READ, (void __user*)arg3, sizeof(struct st_susfs_uname))) {
+			if (!access_ok((unsigned long)arg3, sizeof(struct st_susfs_uname))) {
 				pr_err("susfs: CMD_SUSFS_ADD_UNAME -> arg3 is not accessible\n");
                 return 0;
 			}
-			if (!access_ok(VERIFY_READ, (void __user*)arg5, sizeof(error))) {
+			if (!access_ok((unsigned long)arg5, sizeof(error))) {
 				pr_err("susfs: CMD_SUSFS_ADD_UNAME -> arg5 is not accessible\n");
                 return 0;
 			}
 			error = susfs_add_uname((struct st_susfs_uname __user*)arg3);
             pr_info("susfs: CMD_SUSFS_ADD_UNAME -> ret: %d\n", error);
-            copy_to_user((void __user*)arg5, &error, sizeof(error));
+            copy_to_user((unsigned long)arg5, &error, sizeof(error));
 			return 0;
 		}
         return 0;
